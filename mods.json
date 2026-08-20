@@ -1,0 +1,17 @@
+[
+  {
+    "id": "phoundry",
+    "name": "Phoundry",
+    "author": "EliWimmer",
+    "description": "Household jellyfin-web skin. Requires Seerrfin.",
+    "version": "0.1.0",
+    "jellyfin": "10.10+",
+    "tags": ["dark", "modern", "ui"],
+    "sourceUrl": "https://github.com/EliWimmer/phoundry-jellyfin",
+    "cssUrl": "https://raw.githubusercontent.com/EliWimmer/phoundry-jellyfin/main/skin.css",
+    "preconnect": [
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com"
+    ]
+  }
+]

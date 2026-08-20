@@ -1,0 +1,985 @@
+@import url("https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&display=swap");
+
+:root {
+  --card-shadow-base:
+    1px 1px 2px 0 rgba(255, 255, 255, 0.07) inset,
+    -1px -1px 4px 0 rgba(0, 0, 0, 0.15) inset,
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset, 0 4px 12px 1px rgba(0, 0, 0, 0.1);
+
+  --jf-palette-primary-main: #2cffe8;
+  --jf-palette-primary-light: #7afff2;
+  --jf-palette-primary-dark: #12c4b0;
+  --jf-palette-info-main: #2cffe8;
+  --jf-palette-info-light: #7afff2;
+  --jf-palette-info-dark: #12c4b0;
+
+  --font-sans: "Host Grotesk", sans-serif;
+  --font-display: "Nunito", sans-serif;
+  --font-symbols: "Material Symbols Rounded";
+  --font-icons: "Material Icons";
+
+  --radius-button: 8px;
+  --radius-control: 12px;
+  --radius-card: 18px;
+  --radius-tab: 20px;
+  --radius-pill: 24px;
+  --radius-card-squircle: 32px;
+  --radius-header: 32px;
+
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-hover: rgba(255, 255, 255, 0.1);
+  --glass-active: rgba(255, 255, 255, 0.2);
+  --glass-menu: rgba(40, 40, 40, 0.6);
+  --glass-toolbar: rgba(200, 200, 200, 0.1);
+  --glass-header: #10101090;
+  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+  --glass-divider: rgba(255, 255, 255, 0.06);
+  --glass-blur: 24px;
+  --glass-blur-menu: 20px;
+  --glass-blur-toolbar: 32px;
+  --glass-blur-overlay: 8px;
+
+  --overlay-bg: rgba(0, 0, 0, 0.5);
+  --overlay-hover: rgba(0, 0, 0, 0.4);
+  --card-fill: rgba(40, 40, 40);
+  --text: #fefefe;
+  --text-muted: #747474;
+
+  --icon-home: "home";
+  --icon-star: "star";
+  --icon-film: "movie";
+  --icon-tv: "tv";
+  --icon-comment: "chat";
+  --icon-ticket: "confirmation_number";
+  --icon-lightbulb: "lightbulb";
+  --icon-video: "videocam";
+  --icon-layers: "layers";
+  --icon-tags: "sell";
+  --icon-calendar: "calendar_month";
+  --icon-broadcast: "cell_tower";
+  --icon-list: "list";
+  --icon-bars: "menu";
+  --icon-back: "arrow_back";
+  --icon-search: "search";
+  --icon-user: "person";
+  --icon-cast: "cast";
+  --icon-sync: "sync";
+  --icon-music: "music_note";
+  --icon-play: "play_arrow";
+  --icon-info: "info";
+  --icon-favorite: "favorite";
+}
+
+/* Fonts */
+body {
+  font-family: var(--font-sans);
+}
+
+h2,
+.infoWrapper .itemName,
+.infoWrapper bdi {
+  font-family: var(--font-display);
+}
+
+.material-icons,
+.material-icons::before {
+  font-family: var(--font-icons) !important;
+}
+
+.skinHeader .headerTabs .emby-tab-button::before,
+.skinHeader .headerButton::before,
+.MuiToolbar-root > .MuiStack-root .MuiButton-sizeLarge .MuiButton-iconSizeLarge::before,
+.MuiAppBar-positionFixed .MuiIconButton-root::before,
+button[aria-controls="app-user-menu"]::before,
+#slides-container .play-button::before,
+#slides-container .detail-button::before,
+#slides-container .favorite-button::before {
+  font-family: var(--font-symbols);
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-feature-settings: "liga";
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  line-height: 1;
+  font-size: 20px;
+}
+
+/* Cards */
+.card {
+  & .cardBox {
+    margin-left: 0.5em !important;
+    margin-right: 0.5em !important;
+
+    & .cardScalable,
+    .cardContent,
+    .cardPadder,
+    .cardOverlayContainer,
+    .cardImageContainer,
+    .blurhash-canvas {
+      border-radius: var(--radius-card) !important;
+      overflow: hidden;
+      @supports (corner-shape: squircle) {
+        border-radius: var(--radius-card-squircle) !important;
+        corner-shape: squircle;
+      }
+    }
+    & .cardOverlayContainer {
+      box-shadow: var(--card-shadow-base) !important;
+      opacity: 1 !important;
+      background: transparent;
+    }
+  }
+  & .cardDefaultText {
+    font-size: 16px;
+  }
+  & .defaultCardBackground {
+    background: var(--card-fill) !important;
+  }
+  .cardIndicators {
+    & .countIndicator {
+      background: var(--overlay-bg) !important;
+      transform: translate(-1px, 1px);
+      padding: 0 3px;
+      font-size: 11px !important;
+    }
+  }
+
+  & .cardOverlayButton-br {
+    bottom: 6px !important;
+    right: 6px !important;
+    border-radius: var(--radius-control);
+    padding: 4px;
+    gap: 2px !important;
+    opacity: 0;
+    &:has(.cardOverlayButton-hover) {
+      background: var(--overlay-bg);
+      border: var(--glass-border);
+    }
+    & button {
+      height: 32px !important;
+      width: 32px !important;
+      border-radius: var(--radius-button) !important;
+      &:hover {
+        background: var(--glass-hover) !important;
+      }
+      & .material-icons::before {
+        height: 15px !important;
+        width: 15px !important;
+        font-size: 14px !important;
+        color: var(--text) !important;
+      }
+      & svg {
+        height: 15px !important;
+        width: 15px !important;
+        font-size: 14px !important;
+        color: var(--text) !important;
+      }
+    }
+  }
+  & .cardOverlayFab-primary {
+    transform: scale(1) !important;
+    &.cardOverlayButton-hover {
+      backdrop-filter: blur(var(--glass-blur-overlay));
+    }
+    &:hover {
+      background: var(--overlay-hover) !important;
+    }
+    & .material-icons::before {
+      color: var(--text) !important;
+    }
+    & svg {
+      height: 24px;
+      fill: var(--text) !important;
+      color: var(--text) !important;
+    }
+  }
+}
+
+.card-hoverable:focus-within .cardOverlayButton-hover,
+.card-hoverable:focus-within .cardOverlayContainer,
+.card-hoverable:hover .cardOverlayButton-hover,
+.card-hoverable:hover .cardOverlayContainer {
+  & .cardOverlayButton {
+    opacity: 1;
+    &.cardOverlayFab-primary {
+      backdrop-filter: blur(var(--glass-blur-overlay));
+    }
+  }
+  & .cardOverlayButton-br {
+    opacity: 1;
+    backdrop-filter: blur(var(--glass-blur-overlay));
+  }
+}
+
+.cardIndicators {
+  & .countIndicator,
+  .playedIndicator {
+    background: var(--overlay-bg) !important;
+    transform: translate(-1px, 1px);
+    padding: 0 3px;
+    font-size: 11px !important;
+    & .indicatorIcon {
+      height: 14px;
+    }
+  }
+}
+
+.itemProgressBarForeground {
+  background: var(--jf-palette-primary-main) !important;
+  border-radius: var(--radius-button);
+}
+
+.innerCardFooter {
+  padding-bottom: 4px;
+  width: calc(100% - 48px) !important;
+  margin: 0 auto;
+}
+
+.visualCardBox {
+  border-radius: var(--radius-pill);
+  background: var(--glass-bg) !important;
+}
+
+/* Library chrome */
+button[aria-controls="app-user-menu"] {
+  & img,
+  & svg,
+  & div {
+    display: none !important;
+  }
+  &::before {
+    content: var(--icon-user);
+  }
+}
+
+.padded-top:has([aria-controls="library-view-menu"]) {
+  transform: translatex(6px);
+  padding-right: 8%;
+  & [aria-controls="library-view-menu"] {
+    min-height: 40px !important;
+    background: var(--glass-bg);
+    border-radius: var(--radius-control);
+    padding: 0 12px;
+    &:hover {
+      background: var(--glass-hover);
+    }
+  }
+  & .MuiButtonGroup-horizontal {
+    background: var(--glass-bg) !important;
+    border-radius: var(--radius-control);
+    min-height: 40px !important;
+
+    & button {
+      border: none !important;
+      background: transparent !important;
+      color: var(--text) !important;
+      &:disabled {
+        color: var(--text-muted) !important;
+      }
+      &:hover {
+        background: var(--glass-hover) !important;
+      }
+      &:first-child {
+        border-radius: var(--radius-control) 0 0 var(--radius-control) !important;
+      }
+      &:last-child {
+        border-radius: 0 var(--radius-control) var(--radius-control) 0 !important;
+      }
+    }
+  }
+  & .MuiStack-root:has(.MuiTypography-root) {
+    & .MuiBox-root {
+      margin-right: 8px;
+    }
+  }
+}
+
+.alphaPicker {
+  position: fixed !important;
+  right: 8px !important;
+  top: 50% !important;
+  bottom: 45% !important;
+  & button {
+    border-radius: var(--radius-button) !important;
+    &:hover {
+      background: var(--glass-hover) !important;
+      color: var(--text) !important;
+    }
+  }
+}
+
+/* Menus and dialogs */
+.MuiMenu-paper,
+.actionsheet-not-fullscreen {
+  border-radius: var(--radius-control) !important;
+  overflow: hidden !important;
+  background: var(--glass-menu) !important;
+  backdrop-filter: blur(var(--glass-blur-menu));
+  border: var(--glass-border) !important;
+  @supports (corner-shape: squircle) {
+    corner-shape: squircle;
+    border-radius: var(--radius-pill) !important;
+  }
+  & .MuiMenu-list,
+  .actionSheetContent {
+    padding: 4px !important;
+    & .MuiMenuItem-root,
+    .listItem {
+      border-radius: var(--radius-button);
+      padding: 6px 16px 6px 8px !important;
+      & .listItemBody {
+        padding: 0 !important;
+      }
+    }
+    & .MuiListItemIcon-root,
+    .listItemIcon,
+    .actionsheetMenuItemIcon {
+      min-width: unset !important;
+      margin-right: 6px !important;
+      margin-left: 0 !important;
+      & svg {
+        height: 16px !important;
+        width: 16px !important;
+      }
+      & .material-icons::before {
+        font-size: 10px !important;
+        width: 16px !important;
+        height: 16px !important;
+      }
+    }
+  }
+  & .MuiDivider-root {
+    background: var(--glass-divider);
+    border: none !important;
+    height: 1px;
+  }
+}
+
+.emby-button > .material-icons {
+  font-size: 16px !important;
+}
+
+.dialog-fixedSize {
+  border-radius: var(--radius-pill) !important;
+  & .formDialogHeader {
+    background: transparent !important;
+  }
+}
+
+/* Main drawer */
+.mainDrawer {
+  background: var(--glass-menu) !important;
+  backdrop-filter: blur(var(--glass-blur-menu));
+  border: var(--glass-border);
+  overflow: hidden;
+  contain: none;
+  top: max(8px, env(safe-area-inset-top, 0px));
+  bottom: max(8px, env(safe-area-inset-bottom, 0px));
+  height: auto;
+  margin-inline-start: max(8px, env(safe-area-inset-left, 0px));
+  padding-left: 0;
+  border-radius: var(--radius-header);
+  box-shadow: var(--card-shadow-base);
+  @supports (corner-shape: squircle) {
+    corner-shape: squircle;
+    border-radius: var(--radius-card-squircle);
+  }
+
+  & .scrollContainer,
+  & .mainDrawer-scrollContainer {
+    padding: 8px;
+    min-height: 0;
+  }
+
+  & .navMenuOption {
+    border-radius: var(--radius-button) !important;
+    margin: 0 !important;
+    &:hover {
+      background: var(--glass-hover);
+    }
+  }
+
+  & .navMenuOption-selected {
+    background: var(--glass-active) !important;
+    color: var(--text);
+  }
+
+  & .sidebarHeader {
+    color: var(--text-muted);
+  }
+}
+
+.drawer-open {
+  background: var(--glass-menu) !important;
+  box-shadow: var(--card-shadow-base) !important;
+}
+
+.tmla-mask {
+  background-color: var(--overlay-bg);
+}
+
+@media all and (min-width: 40em) {
+  .dashboardDocument .mainDrawer {
+    top: 0;
+    bottom: 0;
+    margin-inline-start: 0;
+    border-radius: 0;
+    @supports (corner-shape: squircle) {
+      corner-shape: unset;
+    }
+  }
+}
+
+/* Detail */
+.detailRibbon {
+  background: linear-gradient(
+    180deg,
+    rgba(16, 16, 16, 0) 0%,
+    rgba(16, 16, 16, 1) 100%
+  ) !important;
+}
+
+.infoWrapper {
+  & .itemName,
+  bdi {
+    font-size: 3rem;
+    font-family: var(--font-display) !important;
+    font-weight: 800;
+  }
+}
+
+/* App bar */
+.MuiAppBar-positionFixed {
+  background: #10101000 !important;
+
+  & .MuiIconButton-root {
+    & svg,
+    & img {
+      display: none !important;
+    }
+    &:has([data-testid="MenuIcon"])::before,
+    &[aria-label="Menu" i]::before {
+      content: var(--icon-bars);
+    }
+    &:has([data-testid="ArrowBackIcon"])::before,
+    &[aria-label="Back" i]::before {
+      content: var(--icon-back);
+    }
+    &:has([data-testid="HomeIcon"])::before,
+    &[aria-label="Home" i]::before {
+      content: var(--icon-home);
+    }
+    &:has([data-testid="SearchIcon"])::before,
+    &[aria-label="Search" i]::before {
+      content: var(--icon-search);
+    }
+    &:has([data-testid="CastIcon"])::before,
+    &:has([data-testid="GroupsIcon"])::before,
+    &[aria-label="Cast" i]::before {
+      content: var(--icon-cast);
+    }
+    &:has([data-testid="SyncIcon"])::before,
+    &[aria-label="SyncPlay" i]::before,
+    &[aria-label="ButtonSyncPlay" i]::before {
+      content: var(--icon-sync);
+    }
+    &:has([data-testid="PersonIcon"])::before {
+      content: var(--icon-user);
+    }
+  }
+}
+
+.MuiPaper-elevation {
+  box-shadow: none !important;
+}
+
+.MuiToolbar-root {
+  justify-content: center !important;
+  padding: 0 16px 0 8px;
+  display: flex !important;
+  & :nth-child(2) {
+    width: auto !important;
+    flex-grow: 0 !important;
+    margin-left: auto;
+  }
+  & > .MuiIconButton-root:first-of-type {
+    background: var(--glass-header);
+    border-radius: var(--radius-header);
+    backdrop-filter: blur(var(--glass-blur));
+    box-sizing: border-box;
+    height: 48px;
+    width: 48px;
+    padding: 4px;
+  }
+  & > .MuiStack-root:has(.MuiButton-sizeLarge) {
+    background: var(--glass-toolbar) !important;
+    backdrop-filter: blur(var(--glass-blur-toolbar));
+    box-shadow: var(--card-shadow-base);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 0;
+    border-radius: var(--radius-pill);
+    padding: 4px;
+    height: 48px;
+    box-sizing: border-box;
+    & .MuiSvgIcon-root {
+      filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.5));
+    }
+    & .MuiButton-textPrimary {
+      color: white !important;
+      background: var(--glass-active);
+      box-shadow: var(--card-shadow-base);
+    }
+    & .MuiButtonBase-root {
+      padding: 2px 12px 2px 16px !important;
+      border-radius: var(--radius-pill);
+    }
+    & .MuiButton-sizeLarge {
+      font-weight: normal !important;
+      height: 40px;
+
+      & .MuiButton-iconSizeLarge {
+        & img {
+          display: none !important;
+        }
+        &::before {
+          content: var(--icon-ticket);
+        }
+      }
+    }
+  }
+  & > .MuiStack-root:not(:has(.MuiButton-sizeLarge)) {
+    margin-left: auto;
+    background: var(--glass-header);
+    border-radius: var(--radius-header);
+    backdrop-filter: blur(var(--glass-blur));
+    box-sizing: border-box;
+    align-items: center;
+    height: 48px;
+    padding: 4px;
+    gap: 4px;
+  }
+
+  & .MuiIconButton-root:hover,
+  & .MuiButton-root:hover {
+    background: var(--glass-hover) !important;
+    color: #fff !important;
+  }
+}
+
+#slides-container {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+
+  & .plot-container {
+    width: min(36rem, 90%);
+    &.with-video {
+      width: min(36rem, 45%);
+    }
+  }
+
+  & .button-container {
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+    width: auto;
+    height: 64px;
+    padding: 4px;
+    background: var(--glass-header);
+    border-radius: var(--radius-header);
+    backdrop-filter: blur(var(--glass-blur));
+    box-sizing: border-box;
+  }
+
+  & .play-button {
+    order: 1;
+  }
+  & .favorite-button {
+    order: 2;
+  }
+  & .detail-button {
+    order: 3;
+  }
+
+  & .play-button,
+  & .detail-button,
+  & .favorite-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text);
+    box-shadow: none;
+    & i,
+    & svg,
+    & .material-icons {
+      display: none;
+    }
+    &::before {
+      color: var(--text);
+      font-size: 28px;
+    }
+    &:hover {
+      background: var(--glass-hover);
+      opacity: 1;
+    }
+  }
+
+  & .play-button {
+    width: auto;
+    padding: 0 20px 0 16px;
+    gap: 8px;
+    border-radius: var(--radius-pill);
+    font-size: 16px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    & .play-text {
+      display: block;
+      color: var(--text);
+      line-height: 1;
+    }
+  }
+
+  & .play-button::before {
+    content: var(--icon-play);
+  }
+  & .detail-button::before {
+    content: var(--icon-info);
+  }
+  & .favorite-button::before {
+    content: var(--icon-favorite);
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  }
+  & .favorite-button.favorited::before {
+    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+  }
+}
+
+/* Header and Seerrfin */
+body:has(.homePage) .headerLeft .pageTitle,
+.skinHeader.noHomeButtonHeader .headerLeft .pageTitle,
+body:has(.homePage) .MuiToolbar-root > img,
+body:has(.homePage) .MuiToolbar-root > a:has(img) {
+  display: none !important;
+}
+
+.skinHeader {
+  background: transparent !important;
+  padding: max(8px, env(safe-area-inset-top, 0px)) 8px 8px;
+  contain: none;
+  overflow: visible;
+
+  & .headerTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 !important;
+    gap: 8px;
+    min-height: 48px;
+  }
+
+  & .headerLeft,
+  & .headerRight,
+  & .headerTabs {
+    background: var(--glass-header);
+    border-radius: var(--radius-header);
+    backdrop-filter: blur(var(--glass-blur));
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 4px;
+  }
+
+  & .headerLeft {
+    flex-grow: 0 !important;
+    overflow: visible;
+    gap: 4px;
+    min-width: 0;
+
+    & .pageTitle {
+      max-width: 40vw;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  & .headerRight {
+    gap: 4px;
+  }
+
+  & .headerSelectedPlayer:empty {
+    display: none;
+  }
+
+  & .headerButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    border-radius: 50%;
+    & .material-icons,
+    & svg,
+    & img {
+      display: none !important;
+    }
+    &::before {
+      color: var(--text);
+    }
+  }
+
+  & .mainDrawerButton::before {
+    content: var(--icon-bars);
+  }
+  & .headerBackButton::before {
+    content: var(--icon-back);
+  }
+  & .headerHomeButton::before {
+    content: var(--icon-home);
+  }
+  & .headerSearchButton::before {
+    content: var(--icon-search);
+  }
+  & .headerCastButton::before {
+    content: var(--icon-cast);
+  }
+  & .headerSyncButton::before {
+    content: var(--icon-sync);
+  }
+  & .headerAudioPlayerButton::before {
+    content: var(--icon-music);
+  }
+  & .headerUserButton {
+    background-image: none !important;
+    &::before {
+      content: var(--icon-user);
+    }
+  }
+
+  & .headerTabs {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: auto;
+    max-width: 100%;
+    align-self: center;
+    margin-top: 8px;
+    overflow: hidden;
+    & .emby-tabs {
+      max-width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    & .emby-tabs,
+    & .emby-tabs-slider {
+      display: flex;
+      align-items: center;
+      height: 40px;
+    }
+    & .emby-tabs-slider {
+      & .emby-tab-button {
+        height: 40px !important;
+        padding: 0 16px 0 12px;
+        border-radius: var(--radius-tab);
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        white-space: nowrap;
+        gap: 12px;
+        & .emby-button-foreground {
+          line-height: 1;
+        }
+        &.emby-tab-button-active {
+          background: var(--glass-hover);
+        }
+      }
+    }
+
+    &:has([data-seerrfin-tab]) .emby-tab-button {
+      &:first-child::before {
+        content: var(--icon-home);
+      }
+      &:nth-child(2)::before {
+        content: var(--icon-star);
+      }
+      &[data-seerrfin-tab="movies"]::before {
+        content: var(--icon-film);
+      }
+      &[data-seerrfin-tab="tv"]::before {
+        content: var(--icon-tv);
+      }
+      &[data-seerrfin-tab="requests"]::before {
+        content: var(--icon-comment);
+      }
+    }
+
+    &:not(:has(.emby-tab-button)) {
+      display: none;
+    }
+  }
+
+  & .headerButton,
+  & .headerTabs .emby-tab-button {
+    &:hover:not(:disabled) {
+      background: var(--glass-hover) !important;
+      color: #fff !important;
+    }
+    &:hover:not(:disabled)::before,
+    &:hover:not(:disabled) .emby-button-foreground {
+      color: #fff !important;
+    }
+  }
+}
+
+@media (min-width: 1100px) {
+  .skinHeader .headerTabs {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 0 !important;
+    max-width: none;
+  }
+}
+
+@media (max-width: 1099px) {
+  .libraryPage:not(.noSecondaryNavPage) {
+    padding-top: 8.5em !important;
+  }
+
+  .MuiToolbar-root {
+    flex-wrap: wrap;
+    height: auto !important;
+    min-height: 48px;
+    & > .MuiStack-root:has(.MuiButton-sizeLarge) {
+      position: static;
+      left: auto;
+      top: auto;
+      transform: none;
+      order: 3;
+      flex-basis: 100%;
+      margin: 8px auto 0;
+    }
+  }
+}
+
+@media (max-width: 50em) {
+  .skinHeader {
+    background: var(--glass-header) !important;
+    backdrop-filter: blur(var(--glass-blur));
+    padding: env(safe-area-inset-top, 0px) max(8px, env(safe-area-inset-right, 0px)) 4px
+      max(8px, env(safe-area-inset-left, 0px));
+    border-radius: 0;
+
+    & .headerLeft,
+    & .headerRight,
+    & .headerTabs {
+      background: none;
+      backdrop-filter: none;
+      border-radius: 0;
+      padding: 0;
+    }
+
+    & .headerTabs {
+      width: 100%;
+      max-width: 100%;
+      margin-top: 0;
+      align-self: stretch;
+      & .emby-tabs {
+        width: 100%;
+        max-width: none;
+      }
+      & .emby-tabs-slider {
+        width: max-content;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .libraryPage:not(.noSecondaryNavPage) {
+    padding-top: 7em !important;
+  }
+
+  .MuiToolbar-root {
+    background: var(--glass-header) !important;
+    backdrop-filter: blur(var(--glass-blur));
+    & > .MuiIconButton-root:first-of-type,
+    & > .MuiStack-root {
+      background: none !important;
+      backdrop-filter: none;
+    }
+    & > .MuiStack-root:has(.MuiButton-sizeLarge) {
+      margin-top: 0;
+    }
+  }
+}
+
+body:has(.page[data-backdroptype="movie"]:not(.hide)),
+body:has(.navMenuOption-selected[href*="movies.html"]) {
+  .skinHeader .headerTabs:not(:has([data-seerrfin-tab])) .emby-tab-button {
+    &[data-index="0"]::before {
+      content: var(--icon-film);
+    }
+    &[data-index="1"]::before {
+      content: var(--icon-lightbulb);
+    }
+    &[data-index="2"]::before {
+      content: var(--icon-video);
+    }
+    &[data-index="3"]::before {
+      content: var(--icon-star);
+    }
+    &[data-index="4"]::before {
+      content: var(--icon-layers);
+    }
+    &[data-index="5"]::before {
+      content: var(--icon-tags);
+    }
+  }
+}
+
+body:has(.page[data-backdroptype="series"]:not(.hide)),
+body:has(.page[data-backdroptype="tvshows"]:not(.hide)),
+body:has(.navMenuOption-selected[href*="tv.html"]) {
+  .skinHeader .headerTabs:not(:has([data-seerrfin-tab])) .emby-tab-button {
+    &[data-index="0"]::before {
+      content: var(--icon-tv);
+    }
+    &[data-index="1"]::before {
+      content: var(--icon-lightbulb);
+    }
+    &[data-index="2"]::before {
+      content: var(--icon-calendar);
+    }
+    &[data-index="3"]::before {
+      content: var(--icon-tags);
+    }
+    &[data-index="4"]::before {
+      content: var(--icon-broadcast);
+    }
+    &[data-index="5"]::before {
+      content: var(--icon-list);
+    }
+  }
+}

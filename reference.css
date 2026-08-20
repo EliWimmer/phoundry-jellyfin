@@ -1,0 +1,448 @@
+@import url("https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css");
+:root {
+  --card-shadow-base:
+    1px 1px 2px 0 rgba(255, 255, 255, 0.07) inset,
+    -1px -1px 4px 0 rgba(0, 0, 0, 0.15) inset,
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset, 0 4px 12px 1px rgba(0, 0, 0, 0.1);
+  --jf-palette-primary-main: #2cffe8;
+  --jf-palette-primary-light: green;
+  --jf-palette-primary-dark: green;
+
+  --jf-palette-info-main: green;
+  --jf-palette-info-light: green;
+  --jf-palette-info-dark: green;
+
+  --fa-home-icon: 
+;
+}
+
+h2 {
+  font-family: "Nunito";
+}
+:not(.material-icons) {
+  font-family: "Host Grotesk";
+}
+
+.card {
+  & .cardBox {
+    margin-left: 0.5em !important;
+    margin-right: 0.5em !important;
+
+    & .cardScalable,
+    .cardContent,
+    .cardPadder,
+    .cardOverlayContainer {
+      border-radius: 18px !important;
+      @supports (corner-shape: squircle) {
+        border-radius: 32px !important;
+        corner-shape: squircle;
+      }
+    }
+    & .cardOverlayContainer {
+      box-shadow: var(--card-shadow-base) !important;
+      opacity: 1 !important;
+      background: transparent;
+    }
+  }
+  & .cardDefaultText {
+    font-size: 16px;
+  }
+  & .defaultCardBackground {
+    background: rgba(40, 40, 40) !important;
+  }
+  .cardIndicators {
+    & .countIndicator {
+      background: rgba(0, 0, 0, 0.5) !important;
+      transform: translate(-1px, 1px);
+      padding: 0 3px;
+      font-size: 11px !important;
+    }
+  }
+
+  & .cardOverlayButton-br {
+    bottom: 6px !important;
+    right: 6px !important;
+    border-radius: 12px;
+    padding: 4px;
+    gap: 2px !important;
+    opacity: 0;
+    &:has(.cardOverlayButton-hover) {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    & button {
+      height: 32px !important;
+      width: 32px !important;
+      border-radius: 8px !important;
+      &:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+      }
+      & .material-icons::before {
+        height: 15px !important;
+        width: 15px !important;
+        font-size: 14px !important;
+        color: #fefefe !important;
+      }
+      & svg {
+        height: 15px !important;
+        width: 15px !important;
+        font-size: 14px !important;
+        color: #fefefe !important;
+      }
+    }
+  }
+  & .cardOverlayFab-primary {
+    transform: scale(1) !important;
+    &.cardOverlayButton-hover {
+      backdrop-filter: blur(8px);
+    }
+    &:hover {
+      background: rgba(0, 0, 0, 0.4) !important;
+    }
+    & .material-icons::before {
+      color: #fefefe !important;
+    }
+    & svg {
+      height: 24px;
+      fill: #fefefe !important;
+      color: #fefefe !important;
+    }
+  }
+}
+.card-hoverable:focus-within .cardOverlayButton-hover,
+.card-hoverable:focus-within .cardOverlayContainer,
+.card-hoverable:hover .cardOverlayButton-hover,
+.card-hoverable:hover .cardOverlayContainer {
+  & .cardOverlayButton {
+    opacity: 1;
+    &.cardOverlayFab-primary {
+      backdrop-filter: blur(8px);
+    }
+  }
+  & .cardOverlayButton-br {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+  }
+}
+
+.cardIndicators {
+  & .countIndicator,
+  .playedIndicator {
+    background: rgba(0, 0, 0, 0.5) !important;
+    transform: translate(-1px, 1px);
+    padding: 0 3px;
+    font-size: 11px !important;
+    & .indicatorIcon {
+      height: 14px;
+    }
+  }
+}
+
+button[aria-controls="app-user-menu"] div {
+  height: 24px !important;
+  width: 24px !important;
+}
+.padded-top:has([aria-controls="library-view-menu"]) {
+  transform: translatex(6px);
+  padding-right: 8%;
+  & [aria-controls="library-view-menu"] {
+    min-height: 40px !important;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 0 12px;
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+  & .MuiButtonGroup-horizontal {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px;
+    min-height: 40px !important;
+
+    & button {
+      border: none !important;
+      background: transparent !important;
+      color: #fefefe !important;
+      &:disabled {
+        color: #747474 !important;
+      }
+      &:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+      }
+      &:first-child {
+        border-radius: 12px 0 0 12px !important;
+      }
+      &:last-child {
+        border-radius: 0 12px 12px 0 !important;
+      }
+    }
+  }
+  & .MuiStack-root:has(.MuiTypography-root) {
+    & .MuiBox-root {
+      margin-right: 8px;
+    }
+  }
+}
+
+.alphaPicker {
+  position: fixed !important;
+  right: 8px !important;
+  top: 50% !important;
+  bottom: 45% !important;
+  & button {
+    border-radius: 8px !important;
+    &:hover {
+      background: rgba(255, 255, 255, 0.1) !important;
+      color: #fefefe !important;
+    }
+  }
+}
+
+.itemProgressBarForeground {
+  background: var(--jf-palette-primary-main) !important;
+  border-radius: 8px;
+}
+.innerCardFooter {
+  padding-bottom: 4px;
+  width: calc(100% - 48px) !important;
+  margin: 0 auto;
+}
+
+.MuiMenu-paper,
+.actionsheet-not-fullscreen {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  background: rgba(40, 40, 40, 0.6) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  @supports (corner-shape: squircle) {
+    corner-shape: squircle;
+    border-radius: 24px !important;
+  }
+  & .MuiMenu-list,
+  .actionSheetContent {
+    padding: 4px !important;
+    & .MuiMenuItem-root,
+    .listItem {
+      border-radius: 8px;
+      padding: 6px 16px 6px 8px !important;
+      & .listItemBody {
+        padding: 0 !important;
+      }
+    }
+    & .MuiListItemIcon-root,
+    .listItemIcon,
+    .actionsheetMenuItemIcon {
+      min-width: unset !important;
+      margin-right: 6px !important;
+      margin-left: 0 !important;
+      & svg {
+        height: 16px !important;
+        width: 16px !important;
+      }
+      & .material-icons::before {
+        font-size: 10px !important;
+        width: 16px !important;
+        height: 16px !important;
+      }
+    }
+  }
+  & .MuiDivider-root {
+    background: rgba(255, 255, 255, 0.06);
+    border: none !important;
+    height: 1px;
+  }
+}
+
+.emby-button > .material-icons {
+  font-size: 16px !important;
+}
+
+.dialog-fixedSize {
+  border-radius: 24px !important;
+  & .formDialogHeader {
+    background: transparent !important;
+  }
+}
+
+.visualCardBox {
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.detailRibbon {
+  background: linear-gradient(
+    180deg,
+    rgba(16, 16, 16, 0) 0%,
+    rgba(16, 16, 16, 1) 100%
+  ) !important;
+}
+
+.infoWrapper {
+  & .itemName,
+  bdi {
+    font-size: 3rem;
+    font-family: "Nunito" !important;
+    font-weight: 800;
+  }
+}
+
+.MuiAppBar-positionFixed {
+  background: #10101000 !important;
+  & .MuiToolbar-root {
+  }
+}
+
+.MuiPaper-elevation {
+  box-shadow: none !important;
+}
+
+.MuiToolbar-root {
+  justify-content: center !important;
+  padding: 0 16px 0 8px;
+  display: flex !important;
+  justify-content: center !important;
+  & :nth-child(2) {
+    width: auto !important;
+    flex-grow: 0 !important;
+    margin-left: auto;
+  }
+  & > .MuiStack-root {
+    background: rgba(200, 200, 200, 0.1) !important;
+    backdrop-filter: blur(32px);
+    box-shadow: var(--card-shadow-base);
+    position: absolute;
+    margin-top: 8px;
+    border-radius: 24px;
+    padding: 4px;
+    & .MuiSvgIcon-root {
+      filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.5));
+    }
+    & .MuiButton-textPrimary {
+      color: white !important;
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: var(--card-shadow-base);
+    }
+    & .MuiButtonBase-root {
+      padding: 2px 12px 2px 16px !important;
+      border-radius: 24px;
+    }
+    & .MuiButton-sizeLarge {
+      font-weight: normal !important;
+      height: 36px;
+
+      & .MuiButton-iconSizeLarge {
+        & img {
+          display: none !important;
+        }
+        &::before {
+          content: "\f145";
+          font-size: 16px;
+          font-family: "FontAwesome";
+          font-weight: normal;
+          font-weight: normal;
+          font-style: normal;
+          font-variant: normal;
+          text-rendering: auto;
+          line-height: 1;
+          -webkit-font-smoothing: antialiased;
+        }
+      }
+    }
+  }
+}
+
+#slides-container {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+.skinHeader {
+  background: transparent !important;
+  padding: 8px;
+  & .headerTabs {
+    background: #10101090;
+    border-radius: 32px;
+    backdrop-filter: blur(24px);
+    padding: 4px;
+    & .emby-tabs-slider {
+      display: flex;
+      & .emby-tab-button {
+        height: 40px !important;
+        padding: 0 16px 0 12px;
+        border-radius: 20px;
+        display: flex;
+        gap: 12px;
+        & .emby-button-foreground {
+          line-height: 1;
+        }
+        &.emby-tab-button-active {
+          background: rgba(255, 255, 255, 0.1);
+        }
+        &:first-child::before {
+          content: "\f015";
+          font-size: 16px;
+          font-family: "FontAwesome";
+          font-weight: normal;
+          font-weight: normal;
+          font-style: normal;
+          font-variant: normal;
+          text-rendering: auto;
+          line-height: 1;
+          -webkit-font-smoothing: antialiased;
+        }
+        &:nth-child(2)::before {
+          content: "\f005";
+          font-size: 16px;
+          font-family: "FontAwesome";
+          font-weight: normal;
+          font-weight: normal;
+          font-style: normal;
+          font-variant: normal;
+          text-rendering: auto;
+          line-height: 1;
+          -webkit-font-smoothing: antialiased;
+        }
+        &[data-seerrfin-tab="movies"]::before {
+          content: "\f008";
+          font-size: 16px;
+          font-family: "FontAwesome";
+          font-weight: normal;
+          font-weight: normal;
+          font-style: normal;
+          font-variant: normal;
+          text-rendering: auto;
+          line-height: 1;
+          -webkit-font-smoothing: antialiased;
+        }
+        &[data-seerrfin-tab="tv"]::before {
+          content: "\f26c";
+          font-size: 16px;
+          font-family: "FontAwesome";
+          font-weight: normal;
+          font-weight: normal;
+          font-style: normal;
+          font-variant: normal;
+          text-rendering: auto;
+          line-height: 1;
+          -webkit-font-smoothing: antialiased;
+        }
+        &[data-seerrfin-tab="requests"]::before {
+          content: "\f075";
+          font-size: 16px;
+          font-family: "FontAwesome";
+          font-weight: normal;
+          font-weight: normal;
+          font-style: normal;
+          font-variant: normal;
+          text-rendering: auto;
+          line-height: 1;
+          -webkit-font-smoothing: antialiased;
+        }
+      }
+    }
+  }
+}
